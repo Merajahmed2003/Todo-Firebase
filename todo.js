@@ -66,8 +66,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 async function render(uid) {
-  div.innerHTML = "";
-  Array = []
 
   const querySnapshot = await getDocs(
     query(
@@ -76,6 +74,8 @@ async function render(uid) {
       where("uid", "==", uid)
     )
   );
+  div.innerHTML = "";
+  Array = []
 
   querySnapshot.forEach((doc) => {
     Array.push({ ...doc.data(), docId: doc.id });
